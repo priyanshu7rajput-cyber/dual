@@ -1,0 +1,51 @@
+{
+  "name": "plexo-clone-aggregator",
+  "version": "1.0.0",
+  "description": "Multi-network bandwidth aggregator & download manager inspired by Plexo",
+  "main": "electron/main.js",
+  "productName": "Plexo",
+  "scripts": {
+    "start": "electron .",
+    "desktop": "electron .",
+    "web": "node server/index.js",
+    "build": "electron-builder --win",
+    "build:portable": "electron-builder --win portable",
+    "build:nsis": "electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "com.plexo.aggregator",
+    "productName": "Plexo",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "server/**/*",
+      "public/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Plexo"
+    }
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^26.15.3"
+  }
+}
+
+
